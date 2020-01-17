@@ -1,5 +1,6 @@
 const Cliente = require('../../models/Cliente');
 const { Op } = require('sequelize');
+const Axios = require('axios');
 
 module.exports = {
     async index(req, res) {
@@ -44,6 +45,11 @@ module.exports = {
 
     async store(req, res) {
         const { nome, municipio_id, endereco, cnpj } = req.body;
+        const { data } = await Axios.get(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`);
+        const { status, message } = data;
+        if (status === 'ERROR') {
+            return res.status(400).json({ message });
+        }
         const cliente = await Cliente.create({ nome, municipio_id, endereco, cnpj });
         return res.json(cliente);
     },
