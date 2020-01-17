@@ -1,12 +1,27 @@
 const Cliente = require('../../models/Cliente');
+const { Op } = require('sequelize');
 
 module.exports = {
     async index(req, res) {
+        const { nome, endereco, cnpj, municipio, estado } = req.query;
         const cliente = await Cliente.findAll({
             attributes: ['id', 'nome', 'endereco', 'cnpj', 'created_at', 'updated_at'],
             include: {
                 attributes: ['id', 'nome', 'estado'],
-                association: 'municipio'
+                association: 'municipio',
+                where: {
+                    [Op.and]: [
+                        estado ? { estado } : null,
+                        municipio ? { nome: municipio } : null,
+                    ]
+                }
+            },
+            where: {
+                [Op.and]: [
+                    nome ? { nome } : null,
+                    endereco ? { endereco } : null,
+                    cnpj ? { cnpj } : null,
+                ]
             }
         });
         res.json(cliente);

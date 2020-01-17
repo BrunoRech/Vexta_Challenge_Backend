@@ -1,8 +1,17 @@
 const Municipio = require('../../models/Municipio');
+const { Op } = require('sequelize');
 
 module.exports = {
     async index(req, res) {
-        const municipio = await Municipio.findAll();
+        const {estado, nome} = req.query;
+        const municipio = await Municipio.findAll({
+            where: {
+                [Op.and]: [
+                    estado ? { estado } : null,
+                    nome ? { nome } : null,
+                ]
+            }
+        });
         res.json(municipio);
     },
 
