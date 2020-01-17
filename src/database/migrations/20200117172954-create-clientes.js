@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      municipio: {
+      municipio_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

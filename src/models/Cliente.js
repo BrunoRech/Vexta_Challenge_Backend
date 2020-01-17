@@ -4,7 +4,6 @@ class Cliente extends Model {
     static init(connection){
         super.init({
             nome: DataTypes.STRING,
-            municipio: DataTypes.STRING,
             endereco: DataTypes.STRING,
             cnpj: DataTypes.STRING,
         },{
@@ -15,7 +14,8 @@ class Cliente extends Model {
 
     static associate(models){
         this.belongsTo(models.Municipio, {
-            foreignKey: 'municipio',
+            foreignKey: 'municipio_id',
+            as:'municipio'
         });
     }
 }

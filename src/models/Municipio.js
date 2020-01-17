@@ -13,7 +13,7 @@ class Municipio extends Model {
 
     static associate(models){
         this.hasMany(models.Cliente, {
-            foreignKey: 'municipio'
+            foreignKey: 'municipio_id'
         });
     }
 } 
