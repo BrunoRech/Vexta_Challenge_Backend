@@ -7,14 +7,15 @@ class Municipio extends Model {
             estado: DataTypes.STRING,
         },{
             sequelize: connection,
+            tableName: 'municipios'
         });
     }
 
     static associate(models){
         this.hasMany(models.Cliente, {
-            foreignKey: 'municipio'
+            foreignKey: 'municipio_id'
         });
     }
-}
+} 
 
 module.exports = Municipio;

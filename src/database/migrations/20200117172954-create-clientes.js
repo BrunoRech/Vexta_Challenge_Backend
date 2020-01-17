@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      municipio: {
+      municipio_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -23,7 +23,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      cnpj:{
+      cnpj: {
         type: Sequelize.STRING,
         allowNull: false,
       },
