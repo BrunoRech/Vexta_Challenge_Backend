@@ -23,7 +23,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      cnpj:{
+      cnpj: {
         type: Sequelize.STRING,
         allowNull: false,
       },

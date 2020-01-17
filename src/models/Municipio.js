@@ -7,6 +7,7 @@ class Municipio extends Model {
             estado: DataTypes.STRING,
         },{
             sequelize: connection,
+            tableName: 'municipios'
         });
     }
 
@@ -15,6 +16,6 @@ class Municipio extends Model {
             foreignKey: 'municipio'
         });
     }
-}
+} 
 
 module.exports = Municipio;

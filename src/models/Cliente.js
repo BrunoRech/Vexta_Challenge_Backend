@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
-class Municipio extends Model {
+class Cliente extends Model {
     static init(connection){
         super.init({
             nome: DataTypes.STRING,
@@ -9,6 +9,7 @@ class Municipio extends Model {
             cnpj: DataTypes.STRING,
         },{
             sequelize: connection,
+            tableName: 'clientes'
         });
     }
 
@@ -19,4 +20,4 @@ class Municipio extends Model {
     }
 }
 
-module.exports = Municipio;
+module.exports = Cliente;

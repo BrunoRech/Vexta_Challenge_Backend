@@ -1,9 +1,7 @@
 const express = require('express');
-
 const routes = express.Router();
 
-routes.get('/', (req,res)=>{
-    return res.json({hello:'world'});
-});
+routes.use('/clientes', require('./controllers/Cliente/routes'));
+routes.use('/municipios', require('./controllers/Municipio/routes'));
 
 module.exports = routes;
