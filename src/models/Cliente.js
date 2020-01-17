@@ -9,7 +9,13 @@ class Municipio extends Model {
             cnpj: DataTypes.STRING,
         },{
             sequelize: connection,
-        })
+        });
+    }
+
+    static associate(models){
+        this.belongsTo(models.Municipio, {
+            foreignKey: 'municipio',
+        });
     }
 }
 

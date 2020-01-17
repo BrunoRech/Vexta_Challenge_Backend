@@ -7,7 +7,13 @@ class Municipio extends Model {
             estado: DataTypes.STRING,
         },{
             sequelize: connection,
-        })
+        });
+    }
+
+    static associate(models){
+        this.hasMany(models.Cliente, {
+            foreignKey: 'municipio'
+        });
     }
 }
 

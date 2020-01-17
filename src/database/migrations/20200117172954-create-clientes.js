@@ -13,9 +13,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      //municipio: {
-        //TODO
-     // },
+      municipio: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'municipios',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       cnpj:{
         type: Sequelize.STRING,
         allowNull: false,
