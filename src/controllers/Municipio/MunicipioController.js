@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 module.exports = {
     async index(req, res) {
         const {estado, nome} = req.query;
-        const municipio = await Municipio.findAll({
+        const municipios = await Municipio.findAll({
             where: {
                 [Op.and]: [
                     estado ? { estado } : null,
@@ -12,7 +12,7 @@ module.exports = {
                 ]
             }
         });
-        res.json(municipio);
+        res.json(municipios);
     },
 
     async show(req, res) {
@@ -25,9 +25,21 @@ module.exports = {
     },
 
     async store(req, res) {
+        
         const { nome, estado } = req.body;
-        const municipio = await Municipio.create({ nome, estado });
-        return res.json(municipio);
+        const municipios = await Municipio.findOne({
+            where: {
+                [Op.and]:[
+                    { estado },
+                    { nome },
+                ]
+            }
+        });
+        if(municipios){
+            return res.json(municipios);
+       }
+       const municipio = await Municipio.create({ nome, estado });
+       return res.json(municipio);
     },
 
     async update(req, res) {

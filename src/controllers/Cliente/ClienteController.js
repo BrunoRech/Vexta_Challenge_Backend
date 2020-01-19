@@ -6,7 +6,6 @@ module.exports = {
     async index(req, res) {
         const { nome, endereco, cnpj, municipio, estado } = req.query;
         const cliente = await Cliente.findAll({
-            attributes: ['id', 'nome', 'endereco', 'cnpj', 'created_at', 'updated_at'],
             include: {
                 attributes: ['id', 'nome', 'estado'],
                 association: 'municipio',
@@ -48,7 +47,7 @@ module.exports = {
         const { data } = await Axios.get(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`);
         const { status, message } = data;
         if (status === 'ERROR') {
-            return res.status(400).json({ message });
+            return res.json({ error: message });
         }
         const cliente = await Cliente.create({ nome, municipio_id, endereco, cnpj });
         return res.json(cliente);
