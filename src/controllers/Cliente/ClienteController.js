@@ -6,7 +6,6 @@ module.exports = {
     async index(req, res) {
         const { nome, endereco, cnpj, municipio, estado } = req.query;
         const cliente = await Cliente.findAll({
-            attributes: ['id', 'nome', 'endereco', 'cnpj', 'created_at', 'updated_at'],
             include: {
                 attributes: ['id', 'nome', 'estado'],
                 association: 'municipio',
