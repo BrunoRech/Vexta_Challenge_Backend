@@ -16,7 +16,7 @@ app.use(async (err, req, res, next) => {
        // .status(err.status)
         .json({ error: err.errors[0].messages[0] });
     }
-
-    return res.status(err.status || 500).json({ error: 'Erro do Servidor' });
+    return next();
+    // return res.status(err.status || 500).json({ error: 'Erro do Servidor' });
   });
 app.listen(3333);
