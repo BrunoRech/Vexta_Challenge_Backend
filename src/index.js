@@ -12,7 +12,6 @@ app.use(routes);
 
 app.use(async (err, req, res, next) => {
     if (err instanceof validate.ValidationError) {
-        console.log('aaaa', err.errors[0].messages)
        return res
        // .status(err.status)
         .json({ error: err.errors[0].messages[0] });
