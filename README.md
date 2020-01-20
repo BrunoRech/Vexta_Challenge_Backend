@@ -10,7 +10,11 @@
    yarn sequelize db:migrate
 6. Logo após execute o comando para iniciar o servidor
    yarn dev
-7. Caso ocorra o erro que a porta do servidor já está em uso acesse index.js na raíz do projeto
+7. Se você não possue o yarn, é possível utilizar o npm
+8. Para instalar o yarn acesse: https://yarnpkg.com/lang/en/
+9. Caso ocorra o erro que a porta do servidor já está em uso acesse index.js na raíz do projeto
    e mude app.listen(8888) para outra porta.
-8. Caso você mude a porta do servidor e pretende usar o Insomnia, não esqueça
+10. Caso você mude a porta do servidor e pretende usar o Insomnia, não esqueça
    de mudar a porta no ambiente dentro do Insomnia também.
+11. O json do workspace do Insomnia encontra-se dentro de src/utils
+12. Não é necessário usar em nenhum momento SQL no banco

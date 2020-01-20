@@ -3,28 +3,34 @@ const joi = require('joi');
 module.exports = {
     body: {
         nome: joi
-        .string()
-        .trim()
-        .required()
-        .label('Nome'),
-
+            .string()
+            .trim()
+            .required()
+            .error(() => {
+                return { error: 'Nome em branco' }
+            }),
         endereco: joi
-        .string()
-        .trim()
-        .required()
-        .label('Endereco'),
+            .string()
+            .trim()
+            .required()
+            .error(() => {
+                return { error: 'Endereço em branco' }
+            }),
 
         cnpj: joi
-        .string()
-        .trim()
-        .required()
-        .label('Cnpj'),
+            .string()
+            .trim()
+            .required()
+            .error(() => {
+                return { error: 'Cnpj em branco' }
+            }),
 
         municipio_id: joi
-        .number()
-        .positive()
-        .integer()
-        .label('Municipio Id'),
-
+            .number()
+            .positive()
+            .integer()
+            .error(() => {
+                return { error: 'Município em inválido' }
+            }),
     }
 }

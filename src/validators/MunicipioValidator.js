@@ -6,13 +6,16 @@ module.exports = {
         .string()
         .trim()
         .required()
-        .label('Nome'),
+        .error(() => {
+            return { error: 'Nome em branco' }
+        }),
 
         estado: joi
         .string()
         .trim()
         .required()
-        .label('Estado'),
-
+        .error(() => {
+            return { error: 'Estado em branco' }
+        }),
     }
 }
