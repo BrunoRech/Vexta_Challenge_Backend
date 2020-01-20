@@ -6,10 +6,10 @@
 4. Acesse src/config/database.js e coloque o nome do usuário e senha do seu banco de dados Mysql,
    mudar o nome da database não é necessário.
 5. Execute esses comandos no terminal na raíz do projeto respectivamente
-   yarn sequelize db:create
-   yarn sequelize db:migrate
+5.1 yarn sequelize db:create
+5.2 yarn sequelize db:migrate
 6. Logo após execute o comando para iniciar o servidor
-   yarn dev
+6.1 yarn dev
 7. Se você não possue o yarn, é possível utilizar o npm
 8. Para instalar o yarn acesse: https://yarnpkg.com/lang/en/
 9. Caso ocorra o erro que a porta do servidor já está em uso acesse index.js na raíz do projeto
