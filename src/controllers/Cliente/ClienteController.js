@@ -1,6 +1,7 @@
-const Cliente = require('../../models/Cliente');
-const { Op } = require('sequelize');
 const Axios = require('axios');
+const { Op } = require('sequelize');
+const Cliente = require('../../models/Cliente');
+const Municipio = require('../../models/Municipio');
 
 module.exports = {
     async index(req, res) {
@@ -37,13 +38,18 @@ module.exports = {
             }
         });
         if (!cliente) {
-            return res.status(400).json({ message: 'Cliente não foi encontrado' });
+            return res.status(400).json({ error: 'Cliente não foi encontrado' });
         }
         res.json(cliente);
     },
 
     async store(req, res) {
         const { nome, municipio_id, endereco, cnpj } = req.body;
+        console.log(cnpj)
+        const municipio = await Municipio.findByPk(municipio_id);
+        if(!municipio){
+            return res.json({error: 'Município inválido'});
+        }
         const { data } = await Axios.get(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`);
         const { status, message } = data;
         if (status === 'ERROR') {

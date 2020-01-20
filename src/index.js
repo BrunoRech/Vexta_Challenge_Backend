@@ -12,11 +12,8 @@ app.use(routes);
 
 app.use(async (err, req, res, next) => {
     if (err instanceof validate.ValidationError) {
-       return res
-       // .status(err.status)
-        .json({ error: err.errors[0].messages[0] });
+       return res.json({ error: err.errors[0].messages[0] });
     }
     return next();
-    // return res.status(err.status || 500).json({ error: 'Erro do Servidor' });
   });
-app.listen(3333);
+app.listen(8888);
